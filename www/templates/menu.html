@@ -1,0 +1,52 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar bar-header bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Entonte Calculators</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/app/mortgage">
+          <i class="icon ion-home"></i>
+          Mortgage Calculator
+        </ion-item>
+        <ion-item menu-close href="#/app/investmentProperty">
+          <i class="icon ion-cash"></i>
+          Investment Property
+        </ion-item>
+        <ion-item menu-close href="#/app/propertySaleInvestments">
+          <i class="icon ion-umbrella"></i>
+          Investment Sale
+        </ion-item>
+        <ion-item menu-close href="#/app/propertySalePrincipal">
+          <i class="icon ion-ios-pricetags"></i>
+          Residence Sale
+        </ion-item>
+        <ion-item menu-close ng-click="login()">
+          <i class="icon ion-android-drafts"></i>
+          Email Calculations
+        </ion-item>
+        <div class="imageContainer">
+          <img src="img/gerard_logo.png"><br/>
+          Created by Gerard Ng for<br/>
+          Jason Entonte Company<br/>
+          <a href="https://twitter.com/"><i class="icon ion-social-twitter"></i></a> Follow us on Twitter<br/>
+          <a href="https://facebook.com/"><i class="icon ion-social-facebook"></i></a> Like us on Facebook<br/>
+          <a href="https://linkedin.com/"><i class="icon ion-social-linkedin"></i></a> Connect in LinkedIn<br/>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

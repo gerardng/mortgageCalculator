@@ -1,0 +1,108 @@
+<ion-view view-title='<img src="img/header_logo.png"/>'>
+  <ion-header class="bar bar-positive bar-subheader"></ion-header>
+  <ion-content ng-controller="mortgageCalculatorController" delegate-handle="mainScroll">
+    <div class="list">
+      <br/>
+      <div class="item calc-title">
+        <span style="background-color: #000"> Mortgage Calculator </span>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-home"></i> Home Price:</span>
+        <input type="text" ng-model="homePrice" ng-change="updateMonthlyPayments(); updateAmortizationTable()" ng-bind="monthlyPayments()" required real-time-currency placeholder="$" onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-cash"></i> Loan Amount: </span>
+        <span class="calculation">{{homePrice - downpayment | currency}} </span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+
+      <div class="item item-input">
+        <div class="col col-30 col-offset-4">
+          <span class="input-label"> $Down Payment: </span>
+        </div>
+        <div class="col col-13">
+          <input type="text" ng-model="percentDownpayment" ng-init="0" ng-change="newPercentDownpayment(); updateMonthlyPayments(); updateAmortizationTable()" percent placeholder="%" required onkeypress="return isNumberKey(event)">
+        </div>
+        <div class="col-32">
+        </div>
+        <div class="col col-22">
+          <input type="text" ng-model="downpayment" ng-init="0" ng-change="newDownpayment(); updateMonthlyPayments(); updateAmortizationTable()" real-time-currency placeholder="$" required onkeypress="return isNumberKey(event)">
+        </div>
+        <div class="col-9">
+        </div>
+      </div>
+
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-arrow-graph-up-right"></i> Interest Rate: </span>
+        <input type="text" ng-model="interestRate" ng-init="0" ng-change="updateMonthlyPayments(); updateAmortizationTable()" placeholder="%" required percent   onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-lock-combination"></i> Amortization Period: </span>
+        <input type="number" ng-model="amortizationPeriod" ng-change="updateMonthlyPayments(); updateAmortizationTable()" placeholder="years" required   onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-pie-graph"></i> Monthly Payments: </span>
+        <span class="calculation"> {{data.monthlyPayments | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-disc"></i> Term: </span>
+        <input type="number" ng-model="term" ng-init="0" ng-change="updateMonthlyPayments(); updateAmortizationTable()" placeholder="years" required   onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-pie-graph"></i> Yearly Payments: </span>
+        <span class="calculation"> {{data.monthlyPayments * 12 | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-pie-graph"></i> Monthly Interest Rate: </span>
+        <span class="calculation"> {{monthlyRate | percentage : 2}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <button class="button button-block button-stable" ng-click="extraInfoToggle1 = !extraInfoToggle1; scrollMainToBottom()">
+        {{extraInfoToggleText1}}
+      </button>
+      <div ng-show="!extraInfoToggle1">
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-more"></i> Loan to Value Ratio: </span>
+          <span class="calculation"> {{ loanValueRatio | percentage: 0}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-arrow-graph-up-left"></i> Total Interest: </span>
+          <span class="calculation"> {{ totalInterestPaid | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-cash"></i> Total Principal Paid: </span>
+          <span class="calculation"> {{ totalPrincipalPaid | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-cash"></i> Outstanding Balance: </span>
+          <span class="calculation"> {{ homePrice - downpayment - totalPrincipalPaid | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-disc"></i> Percent Equity: </span>
+          <span class="calculation"> {{ percentEquity | percentage :0}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-pricetags"></i> Number of Payments: </span>
+          <span class="calculation"> {{ numberOfPayments | number : 0}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <br/>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-positive">
+    <a class="icon footer-result ion-ios-information-outline" ng-click="mortgageAboutAlert()"></a>
+    <h1 class="title footer-result"> Monthly Payments: {{data.monthlyPayments | currency}}</h1>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,70 @@
+<ion-view view-title='<img src="img/header_logo.png"/>'>
+  <ion-header class="bar bar-positive bar-subheader"></ion-header>
+  <ion-content ng-controller="mortgageCalculatorController" delegate-handle="mainScroll">
+    <div class="list">
+      <br/>
+      <div class="item calc-title">
+        <span style="background-color: #000"> Investment Property Calculator </span>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-home"></i> Annual Rental Income: </span>
+        <input type="text" ng-model="annualRentalIncome" ng-change="updateStorageValues();updateInvestmentPropertyValues()" placeholder="$" required real-time-currency  onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-android-contact"></i> Monthly Mgmt Fee: </span>
+        <input type="text" ng-model="monthlyManagementFee" ng-change="updateStorageValues();updateInvestmentPropertyValues()" placeholder="$" required real-time-currency  onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-ios-albums"></i> Property Tax: </span>
+        <input type="text" ng-model="annualPropertyTaxInsurance" ng-change="updateStorageValues();updateInvestmentPropertyValues()" placeholder="$" required real-time-currency  onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-ios-bookmarks"></i> Utilities: </span>
+        <input type="text" ng-model="utilities" ng-change="updateStorageValues();updateInvestmentPropertyValues()" placeholder="$" required real-time-currency  onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-ios-bookmarks"></i> Monthly Strata Fee: </span>
+        <input type="text" ng-model="monthlyStrataFee" ng-change="updateStorageValues();updateInvestmentPropertyValues()" placeholder="$" required real-time-currency  onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-ios-browsers"></i> Net Operating Income: </span>
+        <span class="calculation"> {{ annualRentalIncome - (monthlyManagementFee * 12 + annualPropertyTaxInsurance + utilities + monthlyStrataFee * 12) | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-cash"></i> Annual Cash Flow: </span>
+        <span class="calculation"> {{ annualRentalIncome - ((monthlyManagementFee * 12) + annualPropertyTaxInsurance + utilities + (monthlyStrataFee * 12)) - storedOneYearPayments | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+
+      <div class="item item-divider">
+        Summary
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-log-in"></i> % ROI on Equity: </span>
+        <span class="calculation"> {{ ROI | percentage : 2}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-log-in"></i> % True ROI on Equity: </span>
+        <span class="calculation"> {{ trueROI | percentage : 2}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-stats-bars"></i> % Cap Rate: </span>
+        <span class="calculation"> {{ capRate | percentage : 2}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-positive">
+    <a class="icon footer-result ion-ios-information-outline" ng-click="investmentPropertyAboutAlert()"></a>
+    <h1 class="title footer-result"> True ROI: {{data.trueROI | percentage : 2}}</h1>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,186 @@
+<ion-view view-title='<img src="img/header_logo.png"/>'>
+  <ion-header class="bar bar-positive bar-subheader"></ion-header>
+  <ion-content ng-controller="mortgageCalculatorController" delegate-handle="mainScroll">
+    <div class="list">
+      <br/>
+      <div class="item calc-title">
+        <span style="background-color: #000"> Property Sale: Investments Calculator </span>
+      </div>
+      <div class="item item-divider">
+        Property
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-clock"></i> Years held: </span>
+        <input type="text" ng-model="yearsHeld" ng-change="updateStorageValues(); updatePropertySaleValues()" required  placeholder="years" onkeypress="return isNumberKey(event)">
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-pie-graph"></i> Equity: </span>
+        <span class="calculation"> {{ storedDownpayment | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-arrow-graph-up-left"></i> Value at Purchase: </span>
+        <span class="calculation"> {{ storedHomePrice | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+
+      <div class="item item-input item-select">
+        <span class="input-label"><i class="icon ion-clock"></i> Appreciation: </span>
+        <select ng-model="selectedPropertyValue" ng-change="updateStorageValues(); updatePropertySaleValues()" ng-init="0" required>
+          <option ng-repeat="x in marketOptions" value="{{x.value}}">{{x.label}}</option>
+        </select>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-clock"></i> Future Value: </span>
+        <span class="calculation"> {{ propertyValueCurrentMarket| currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+
+      <button class="button button-block" ng-click="extraInfoToggle2 = !extraInfoToggle2; scrollMainToBottom()">
+        {{extraInfoToggleText2}}
+      </button>
+      <div ng-show="!extraInfoToggle2">
+        <div class="item item-divider">
+          Expenses
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-umbrella"></i> Broker Fee: </span>
+          <span class="calculation"> {{ brokerFee | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-locked"></i> Home Inspection Fee: </span>
+          <input type="text" ng-model="homeInspectionFee" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-hammer"></i>
+          <span class="input-label">  Renovations: </span>
+          <input type="text" ng-model="renovations" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-document-text"></i>
+          <span class="input-label">  Appraisal Fee: </span>
+          <input type="text" ng-model="appraisalFee" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-email"></i>
+          <span class="input-label">  Notary Fee on Purchase: </span>
+          <input type="text" ng-model="notaryFeeOnPurchase" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-email"></i>
+          <span class="input-label">  Notary Fee on Sale: </span>
+          <input type="text" ng-model="notaryFeeOnSale" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-chatbox-working"></i>
+          <span class="input-label">  Pre-Mortgage Charges: </span>
+          <input type="text" ng-model="mortgagePrePaymentCharges" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-home"></i> Property Transfer Tax: </span>
+          <span class="calculation"> {{ propertyTransferTax | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-pricetag"></i>  Other Expenses (GST): </span>
+          <input type="text" ng-model="otherExpenses" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+
+        <div class="item item-divider">
+          Tax Deductible 1-Year
+        </div>
+        <div class="item item-input">
+          <span class="input-label"><i class="icon ion-android-contact"></i> Interest Expense: </span>
+          <span class="calculation"> {{ storedOneYearInterest | currency}}</span>
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-clipboard"></i>
+          <span class="input-label">  Accounting Services: </span>
+          <input type="text" ng-model="accountingServices" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-android-contact"></i>
+          <span class="input-label">  Monthly Management Fee: </span>
+          <input type="text" ng-model="monthlyManagementFee" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-home"></i>
+          <span class="input-label">  Monthly Strata Fee: </span>
+          <input type="text" ng-model="monthlyStrataFee" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-calculator"></i>
+          <span class="input-label">  Incorporation Cost: </span>
+          <input type="text" ng-model="incorporationCost" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-android-contact"></i>
+          <span class="input-label">  Insurance: </span>
+          <input type="text" ng-model="insurance" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-home"></i>
+          <span class="input-label">  Property Tax: </span>
+          <input type="text" ng-model="propertyTax" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-fireball"></i>
+          <span class="input-label">  Heat: </span>
+          <input type="text" ng-model="heat" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-flash"></i>
+          <span class="input-label">  Hydro: </span>
+          <input type="text" ng-model="hydro" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-android-contact"></i>
+          <span class="input-label">  Maintenance Fee: </span>
+          <input type="text" ng-model="maintenanceFee" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+        <div class="item item-input">
+          <i class="icon ion-hammer"></i>
+          <span class="input-label">  Renovations: </span>
+          <input type="text" ng-model="renovationsDeductible" ng-change="updateStorageValues(); updatePropertySaleValues()" required real-time-currency  placeholder="$" onkeypress="return isNumberKey(event)">
+          <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+        </div>
+      </div>
+      <div class="item item-divider">
+        Summary
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-log-in"></i> Total Expense: </span>
+        <span class="calculation"> {{ homeInspectionFee + renovations + appraisalFee + notaryFeeOnPurchase + notaryFeeOnSale + mortgagePrePaymentCharges + (storedHomePrice - 200000) * 0.02 + 2000 + otherExpenses | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+      <div class="item item-input">
+        <span class="input-label"><i class="icon ion-log-in"></i> Total Deductible: </span>
+        <span class="calculation"> {{ storedOneYearInterest + accountingServices + monthlyManagementFee * 12 + monthlyStrataFee * 12 + incorporationCost + propertyTax + heat + hydro + maintenanceFee + renovationsDeductible | currency}}</span>
+        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-positive">
+    <a class="icon footer-result ion-ios-information-outline" ng-click="psInvestmentAboutAlert()"></a>
+    <h1 class="title footer-result"> Total Expense: {{data.totalExpense | currency}}</h1>
+  </ion-footer-bar>
+</ion-view>
