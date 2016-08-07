@@ -3,6 +3,11 @@ Mortgage Calculator
 
 An app created using the Ionic Framework and AngularJS.
 
+## Screens
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator.png)
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator2.png)
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/menu.png)
+
 ## Using this project
 
 Make sure the `ionic` utility is installed:
