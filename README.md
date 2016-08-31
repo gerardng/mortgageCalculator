@@ -34,7 +34,7 @@ $ ionic run android
 More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
 
 ## Screens
-![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png)
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png){:height="36px" width="36px"}
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator2.png)
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator3.png)
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator4.png)
