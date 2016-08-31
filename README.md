@@ -1,3 +1,4 @@
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/logo.png)
 Mortgage Calculator
 =====================
 
