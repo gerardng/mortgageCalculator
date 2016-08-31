@@ -44,11 +44,6 @@
         <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
       </div>
       <div class="item item-input">
-        <span class="input-label"><i class="icon ion-pie-graph"></i> Monthly Payments: </span>
-        <span class="calculation"> {{data.monthlyPayments | currency}}</span>
-        <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>
-      </div>
-      <div class="item item-input">
         <span class="input-label"><i class="icon ion-disc"></i> Term: </span>
         <input type="number" ng-model="term" ng-init="0" ng-change="updateMonthlyPayments(); updateAmortizationTable()" placeholder="years" required   onkeypress="return isNumberKey(event)">
         <a class="icon right-input ion-ios-information-outline" ng-click="showAlert()"></a>

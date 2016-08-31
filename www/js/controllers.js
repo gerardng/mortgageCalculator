@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopup) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopup, data) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -8,6 +8,8 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
+
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -29,25 +31,36 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('doLogin function', $scope.loginData);
 
+  $scope.sendEmail = function($scope, data){
+    if(window.plugins && window.plugins.emailComposer) {
+      window.plugins.emailComposer.showEmailComposerWithCallback(function(result) {
+          console.log("Response -> " + result);
+        },
+        "Entote Mortgage Calculator Results", // Subject
+        "I've been using Entote Mortgage Calculator, check it out!", // Body
+        [" "],    // To
+        null,                    // CC
+        null,                    // BCC
+        false,                   // isHTML
+        null,                    // Attachments
+        null);                   // Attachment Data
+    }
+  };
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
+    $timeout(function () {
       $scope.closeLogin();
     }, 1000);
-  };
 
-  $scope.showAlert = function() {
-    $ionicPopup.alert({
-      title: 'Email',
-      template: 'Under construction'
-    });
-  };
-})
+    $scope.showAlert = function() {
+      var alertPopup = $ionicPopup.alert({
+        title: 'More information',
+        template: 'Visit jasonentote.com for more'
+      });
+    };
+  })
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
@@ -72,8 +85,8 @@ angular.module('starter.controllers', [])
   $scope.totalPrincipalPaid = 0; $scope.loanValueRatio = 0; $scope.percentEquity = 0;
   $scope.numberOfPayments = 0; $scope.monthlyRate = 0; $scope.ROI = 0; $scope.trueROI = 0; $scope.capRate = 0;
   $scope.netOperatingIncome = 0; $scope.annualCashFlow = 0; $scope.trueProfit = 0;
-  $scope.equityProfit = 0; $scope.brokerFee = 0; $scope.propertyTransferTax = 0;
-  $scope.propertyValueCurrentMarket = 0; $scope.storedOneYearInterest = 0;
+  $scope.data.equityProfit = 0; $scope.brokerFee = 0; $scope.propertyTransferTax = 0;
+  $scope.data.propertyValueCurrentMarket = 0; $scope.storedOneYearInterest = 0;
   $scope.storedOneYearInterest = 0; $scope.storedDownpayment = 0; $scope.storedHomePrice = 0;
 
 
@@ -213,7 +226,7 @@ angular.module('starter.controllers', [])
       $scope.storedFiveYearOutstandingBalance  = parseInt(localStorage.getItem("fiveYearOutstandingBalance"));
     }
     $scope.ROI = (($scope.annualRentalIncome - ($scope.monthlyManagementFee * 12 + $scope.annualPropertyTaxInsurance + $scope.utilities + $scope.monthlyStrataFee * 12)) - $scope.storedOneYearPayments) / $scope.storedDownpayment;
-    $scope.trueROI = ($scope.annualRentalIncome - ($scope.monthlyManagementFee * 12 + $scope.annualPropertyTaxInsurance + $scope.utilities + $scope.monthlyStrataFee * 12) - $scope.storedOneYearInterest) / $scope.storedDownpayment;
+    $scope.data.trueROI = ($scope.annualRentalIncome - ($scope.monthlyManagementFee * 12 + $scope.annualPropertyTaxInsurance + $scope.utilities + $scope.monthlyStrataFee * 12) - $scope.storedOneYearInterest) / $scope.storedDownpayment;
     $scope.capRate = ($scope.annualRentalIncome - ($scope.monthlyManagementFee * 12 + $scope.annualPropertyTaxInsurance + $scope.utilities + $scope.monthlyStrataFee * 12)) / $scope.storedHomePrice;
   };
 
@@ -226,16 +239,16 @@ angular.module('starter.controllers', [])
 
   // update dropdown value logic
   $scope.updatePropertySaleValues = function () {
-    $scope.propertyValueCurrentMarket = $scope.storedHomePrice * Math.pow(($scope.selectedPropertyValue), $scope.yearsHeld);
-    $scope.brokerFee = (100000 * 0.07)+($scope.propertyValueCurrentMarket - 100000) * 0.011625;
+    $scope.data.propertyValueCurrentMarket = $scope.storedHomePrice * Math.pow(($scope.selectedPropertyValue), $scope.yearsHeld);
+    $scope.brokerFee = (100000 * 0.07)+($scope.data.propertyValueCurrentMarket - 100000) * 0.011625;
     $scope.propertyTransferTax = (($scope.storedHomePrice - 200000 ) * 0.02 + 2000);
     $scope.totalExpense = $scope.marketing + $scope.interestExpense + $scope.monthlyStrataFee * 12 + $scope.renovations
       + $scope.homeInspectionFee + $scope.appraisalFee + $scope.notaryFeeOnPurchase + $scope.notaryFeeOnSale
       + $scope.mortgagePrePaymentCharges + $scope.propertyTransferTax + $scope.otherExpenses;
 
-    $scope.trueProfit = (($scope.propertyValueCurrentMarket - $scope.storedDownpayment - $scope.storedFiveYearOutstandingBalance
+    $scope.trueProfit = (($scope.data.propertyValueCurrentMarket - $scope.storedDownpayment - $scope.storedFiveYearOutstandingBalance
     - $scope.totalExpense - $scope.brokerFee - $scope.storedTotalInterestPaid) / $scope.storedDownpayment);
-    $scope.equityProfit = (($scope.propertyValueCurrentMarket - $scope.brokerFee - $scope.totalExpense - $scope.storedHomePrice) / $scope.storedHomePrice);
+    $scope.data.equityProfit = (($scope.data.propertyValueCurrentMarket - $scope.brokerFee - $scope.totalExpense - $scope.storedHomePrice) / $scope.storedHomePrice);
   };
 
   // Drop down logic function/s
@@ -251,8 +264,8 @@ angular.module('starter.controllers', [])
   // An alert dialog
   $scope.showAlert = function() {
     var alertPopup = $ionicPopup.alert({
-      title: 'Home Price',
-      template: 'Home Price is original price of the house you are about to purchase'
+      title: 'More information',
+      template: 'Visit jasonentote.com for more'
     });
   };
 
@@ -290,7 +303,7 @@ angular.module('starter.controllers', [])
 
 // service
 .factory('data',function() {
-  return {monthlyPayments: ''};
+  return {monthlyPayments: '', trueROI: '', propertyValueCurrentMarket: '', equitProfit: ''};
 })
 
 // percentage angular filter
