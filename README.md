@@ -3,7 +3,7 @@ Mortgage Calculator ![alt tag](https://github.com/gerardng/mortgageCalculator/bl
 
 An app created using the Ionic Framework and AngularJS for home owners and real estate agents. Available on Google Playstore!
 
-![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/google-store-btn.png)(https://www.google.com)
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/google-store-btn.png)[Click here](https://www.google.com)
 
 
 ## Using this project
@@ -34,7 +34,7 @@ $ ionic run android
 More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
 
 ## Screens
-![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png){:height="36px" width="36px"}
+![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png)
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator2.png)
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator3.png)
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/calculator4.png)
