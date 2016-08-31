@@ -1,5 +1,4 @@
-![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/logo.png)
-Mortgage Calculator
+Mortgage Calculator ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/logo.png)
 =====================
 
 An app created using the Ionic Framework and AngularJS for home owners and real estate agents. Available on Google Playstore!
