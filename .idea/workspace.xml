@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01414d0c-2a77-4fc4-812c-eebffbf28a22" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ionic.project" afterPath="$PROJECT_DIR$/ionic.config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/img/gerard_logo.png" afterPath="$PROJECT_DIR$/www/img/gerard_logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/img/header_logo.png" afterPath="$PROJECT_DIR$/www/img/header_logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/investmentProperty.html" afterPath="$PROJECT_DIR$/www/templates/investmentProperty.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login.html" afterPath="$PROJECT_DIR$/www/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/mortgage.html" afterPath="$PROJECT_DIR$/www/templates/mortgage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/propertySaleInvestments.html" afterPath="$PROJECT_DIR$/www/templates/propertySaleInvestments.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/propertySalePrincipal.html" afterPath="$PROJECT_DIR$/www/templates/propertySalePrincipal.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calculator.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/menu.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calculator2.png" afterPath="$PROJECT_DIR$/calculator2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="mortCalc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -328,15 +318,15 @@
       <workItem from="1472514204047" duration="204000" />
       <workItem from="1472572356781" duration="9430000" />
       <workItem from="1472656040634" duration="1254000" />
-      <workItem from="1472659245348" duration="136000" />
+      <workItem from="1472659245348" duration="231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30173000" />
+    <option name="totallyTimeSpent" value="30268000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1366" height="682" extended-state="1" />
+    <frame x="0" y="23" width="1366" height="682" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
