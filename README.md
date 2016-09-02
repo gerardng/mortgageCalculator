@@ -35,6 +35,9 @@ More info on this can be found on the Ionic [Getting Started](http://ionicframew
 
 ## Screens
 <img src="https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png" width="250px" height="435px"/>
+<img src="https://github.com/gerardng/mortgageCalculator/blob/master/calculator2.png" width="250px" height="435px"/>
+<img src="https://github.com/gerardng/mortgageCalculator/blob/master/calculator3.png" width="250px" height="435px"/>
+<img src="https://github.com/gerardng/mortgageCalculator/blob/master/calculator4.png" width="250px" height="435px"/>
 
 ## Issues
 Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
