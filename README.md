@@ -5,6 +5,11 @@ An app created using the Ionic Framework and AngularJS for home owners and real 
 
 ![alt tag](https://github.com/gerardng/mortgageCalculator/blob/master/google-store-btn.png)[Click here](https://play.google.com/store/apps/details?id=com.gerardngjr.entotemortgagecalculator)
 
+<img src="https://github.com/gerardng/mortgageCalculator/blob/master/calculator1.png" width="100px" height="100px" />
+<img src="/mortgageCalculator/blob/master/calculator1.png" width="100px" height="100px" />
+<img src="/blob/master/calculator1.png" width="100px" height="100px" />
+<img src="master/calculator1.png" width="100px" height="100px" />
+
 
 ## Using this project
 
